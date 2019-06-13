@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 配置 Spring 整合 Mybatis 无非就是声明 SqlSessionFactoryBean，以及配置 Mapper 接口和映射文件 -->
+
+    <!-- 配置 SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 方法一 配置 Mapper 映射文件路径 -->
+        <property name="mapperLocations" value="classpath:xyz/wecloud/mybatis/spring/mappers/*.xml"/>
+    </bean>
+
+    <!-- 方法二 配置 MapperScannerConfigurer 可用于指定需要扫描的 Mapper 映射器包路径 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="xyz.wecloud.mybatis.spring.mappers" />
+    </bean>
+
+    <!-- 方法三 配置 MapperFactoryBean 用于生产 Mapper 映射器代理实例 -->
+    <bean id="departmentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="mapperInterface" value="xyz.wecloud.mybatis.spring.mappers.db2.DepartmentMapper"/>
+    </bean>
+    <bean id="employeeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="mapperInterface" value="xyz.wecloud.mybatis.spring.mappers.db1.EmployeeMapper"/>
+    </bean>
+</beans>

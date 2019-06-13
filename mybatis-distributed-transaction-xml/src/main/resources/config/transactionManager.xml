@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 配置 TransactionManager 用于 Spring 事务管理 -->
+    <bean id="platformTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+        <property name="userTransaction">
+            <bean class="com.atomikos.icatch.jta.UserTransactionImp"/>
+        </property>
+        <property name="transactionManager">
+            <bean class="com.atomikos.icatch.jta.UserTransactionManager"/>
+        </property>
+    </bean>
+
+    <!-- 配置事务通知，用于对指定方法前后进行事务管理 -->
+    <tx:advice id="txAdvice" transaction-manager="platformTransactionManager">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="save*"/>
+            <tx:method name="remove*"/>
+            <tx:method name="update*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置AOP，并设置事务的切入点和事务通知 -->
+    <aop:config>
+        <aop:pointcut id="txPointcut" expression="execution(* *..*Service.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+</beans>

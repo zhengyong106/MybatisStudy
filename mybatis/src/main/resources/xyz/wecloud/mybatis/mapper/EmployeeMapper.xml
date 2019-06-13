@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.wecloud.mybatis.mapper.EmployeeMapper">
+    <resultMap id="employeeResultMap" type="xyz.wecloud.mybatis.models.Employee">
+        <id property="empId" column="emp_id"/>
+        <result property="empName" column="emp_name"/>
+        <result property="empSalary" column="emp_salary"/>
+        <result property="empAge" column="emp_age"/>
+    </resultMap>
+
+    <resultMap id="employeeCustomResultMapper" type="xyz.wecloud.mybatis.models.EmployeeCustom">
+        <id property="empId" column="emp_id"/>
+        <result property="empName" column="emp_name"/>
+        <result property="empSalary" column="emp_salary"/>
+        <result property="empAge" column="emp_age"/>
+        <!-- 数据库关联OneToOne -->
+        <association property="department" select="selectDepartmentById" column="dep_id"/>
+
+        <!--<association property="department" javaType="store.wecloud.mybatis.models.Department">-->
+            <!--<id property="depId" column="dep_id"/>-->
+            <!--<result property="depName" column="dep_name"/>-->
+            <!--<result property="depCTime" column="dep_ctime"/>-->
+        <!--</association>-->
+
+        <!-- 数据库关联OneToMany -->
+        <collection property="empCards" ofType="xyz.wecloud.mybatis.models.Card">
+            <id property="cardId" column="card_id"/>
+            <result property="cardName" column="card_name"/>
+            <result property="cardType" column="card_type"/>
+            <result property="empId" column="emp_id"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="departmentResultMap" type="xyz.wecloud.mybatis.models.Department">
+        <id property="depId" column="dep_id"/>
+        <result property="depName" column="dep_name"/>
+        <result property="depCTime" column="dep_ctime"/>
+    </resultMap>
+
+    <select id="selectEmployeeById" resultMap="employeeResultMap">
+        select * from TAB_EMP where emp_id=#{id}
+    </select>
+
+    <!--<select id="selectEmployeeCustomById" resultMap="employeeCustomResultMapper">-->
+        <!--SELECT A.*, B.card_id, B.card_name, B.card_type, C.dep_name, C.dep_ctime-->
+        <!--FROM TAB_EMP A-->
+        <!--LEFT JOIN TAB_CARD B ON A.emp_id = B.emp_id-->
+        <!--LEFT JOIN TAB_DEP C ON A.dep_id = C.dep_id-->
+        <!--WHERE A.emp_id = #{id}-->
+    <!--</select>-->
+
+    <select id="selectEmployeeCustomById" resultMap="employeeCustomResultMapper">
+        SELECT A.*, B.card_id, B.card_name, B.card_type
+        FROM TAB_EMP A
+        LEFT JOIN TAB_CARD B ON A.emp_id = B.emp_id
+        WHERE A.emp_id = #{id}
+    </select>
+
+    <select id="selectDepartmentById" resultMap="departmentResultMap">
+        SELECT * FROM TAB_DEP WHERE dep_id = #{id}
+    </select>
+</mapper>

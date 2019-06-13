@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>xyz.wecloud</groupId>
+    <artifactId>mybatis-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>mybatis</module>
+        <module>mybatis-distributed-transaction-annotation</module>
+        <module>mybatis-distributed-transaction-xml</module>
+        <module>mybatis-multiple-datasource-annotation</module>
+        <module>mybatis-multiple-datasource-split-package</module>
+        <module>mybatis-spring-annotation</module>
+        <module>mybatis-spring-xml</module>
+    </modules>
+
+    <properties>
+        <spring-version>5.1.7.RELEASE</spring-version>
+        <slf4j-version>1.7.26</slf4j-version>
+        <!-- 高版本 mysql 和 atomikos 存在兼容性问题，这里使用低版本mysql -->
+        <mysql-version>6.0.6</mysql-version>
+        <mybatis-version>3.5.1</mybatis-version>
+        <mybatis-spring-version>2.0.1</mybatis-spring-version>
+        <junit-version>4.12</junit-version>
+        <druid-version>1.1.17</druid-version>
+        <atomikos-version>5.0.0</atomikos-version>
+        <jta-version>1.1</jta-version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <!-- log4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+
+            <!-- mysql jdbc -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-version}</version>
+            </dependency>
+
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring-version}</version>
+            </dependency>
+
+            <!-- junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid-version}</version>
+            </dependency>
+
+            <!-- atomikos 用于实现分布式事务 -->
+            <dependency>
+                <groupId>com.atomikos</groupId>
+                <artifactId>transactions-jdbc</artifactId>
+                <version>${atomikos-version}</version>
+            </dependency>
+
+            <!-- jta 用于实现分布式事务 -->
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>${jta-version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

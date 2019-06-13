@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 读取 properties 配置文件 -->
+    <context:property-placeholder location="classpath:datasource.properties"/>
+
+    <!-- 配置 DataSource -->
+    <bean id="dataSource1" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+        <property name="xaDataSourceClassName" value="com.alibaba.druid.pool.xa.DruidXADataSource"/>
+        <property name="uniqueResourceName" value="dataSource1"/>
+        <property name="poolSize" value="5"/>
+        <property name="xaProperties">
+            <props>
+                <prop key="url">${jdbc1.url}</prop>
+                <prop key="username">${jdbc1.username}</prop>
+                <prop key="password">${jdbc1.password}</prop>
+                <prop key="driverClassName">${jdbc1.driverClassName}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="dataSource2" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+        <property name="xaDataSourceClassName" value="com.alibaba.druid.pool.xa.DruidXADataSource"/>
+        <property name="uniqueResourceName" value="dataSource2"/>
+        <property name="poolSize" value="5"/>
+        <property name="xaProperties">
+            <props>
+                <prop key="url">${jdbc2.url}</prop>
+                <prop key="username">${jdbc2.username}</prop>
+                <prop key="password">${jdbc2.password}</prop>
+                <prop key="driverClassName">${jdbc2.driverClassName}</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
