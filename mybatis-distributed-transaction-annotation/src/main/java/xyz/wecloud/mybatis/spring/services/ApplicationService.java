@@ -19,9 +19,8 @@ public class ApplicationService {
     DepartmentMapper departmentMapper;
 
     /**
-     * 由 Spring 管理的 Mapper 映射器实际上都是由 SqlSessionTemplate 所创建（即来自同一个 SqlSession ），而 Mapper 映射器访问 SqlSession 数据方法实际上都不是通过SqlSessionTemplate 而是新创建一个 SqlSession 去调用
-     * 因此在 Spring 事务以内调用任何在映射器中方法，Mapper 映射器创建得到的都是同一个 SqlSession，这是因为 Spring 对 Mybatis 事务管理是底层通过 SqlSession 的 Commit 和 Rollback 来完成的
-     * 反之在 Spring 事务之外调用任何在映射器中方法，事务都将会自动被提交，而每次调用 Mapper 映射器中的方法所创建的 SqlSession 都是不一样的
+     * 当调用 SQL 方法时（包括由 getMapper() 方法返回的映射器中的方法），SqlSessionTemplate 将会保证使用的 SqlSession 与当前 Spring 的事务相关
+     * （Spring 事务内调用任何映射器中中的方法时，映射器只会创建一次 SqlSession，此外，它管理 该SqlSession 的生命周期，包含必要的关闭、提交或回滚操作
      **/
     @Transactional
     public Department getDepartmentByEmployeeId(Integer id){

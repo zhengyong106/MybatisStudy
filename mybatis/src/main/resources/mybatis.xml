@@ -13,7 +13,7 @@
     <environments default="database1">
         <!-- 定义默认环境 -->
         <environment id="database1">
-            <!-- 指定JDBC事务管理 -->
+            <!-- 指定JDBC事务管理，等效于 org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory -->
             <transactionManager type="JDBC"/>
             <!-- 数据源类型可用类型包括 POOLED、UNPOOLED、JNDI -->
             <dataSource type="POOLED">

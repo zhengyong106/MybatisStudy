@@ -36,7 +36,7 @@ public class Ch4_MybatisMapper {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         // 通过mapper代理获取userMapper接口实现对象
         EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
-        // 创建userQueryVo
+        // 执行statement
         Employee employee = employeeMapper.selectEmployeeById(1);
         logger.info("输出映射对象[{}]", employee);
         // 释放资源
