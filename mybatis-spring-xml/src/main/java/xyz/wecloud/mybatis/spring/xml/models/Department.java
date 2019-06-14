@@ -1,4 +1,4 @@
-package xyz.wecloud.mybatis.spring.models;
+package xyz.wecloud.mybatis.spring.xml.models;
 
 import java.util.Date;
 

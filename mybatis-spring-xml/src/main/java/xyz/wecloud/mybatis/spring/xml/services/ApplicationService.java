@@ -1,13 +1,13 @@
-package xyz.wecloud.mybatis.spring.services;
+package xyz.wecloud.mybatis.spring.xml.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import xyz.wecloud.mybatis.spring.mappers.DepartmentMapper;
-import xyz.wecloud.mybatis.spring.mappers.EmployeeMapper;
-import xyz.wecloud.mybatis.spring.models.Department;
-import xyz.wecloud.mybatis.spring.models.Employee;
+import xyz.wecloud.mybatis.spring.xml.mappers.DepartmentMapper;
+import xyz.wecloud.mybatis.spring.xml.mappers.EmployeeMapper;
+import xyz.wecloud.mybatis.spring.xml.models.Department;
+import xyz.wecloud.mybatis.spring.xml.models.Employee;
 
 @Service
 public class ApplicationService {

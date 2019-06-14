@@ -1,6 +1,6 @@
-package xyz.wecloud.mybatis.spring.mappers;
+package xyz.wecloud.mybatis.spring.xml.mappers;
 
-import xyz.wecloud.mybatis.spring.models.Department;
+import xyz.wecloud.mybatis.spring.xml.models.Department;
 
 public interface DepartmentMapper {
     Department selectDepartmentById(Integer id);

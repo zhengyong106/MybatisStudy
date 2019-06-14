@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="xyz.wecloud.mybatis.spring.mappers.db1.EmployeeMapper">
-    <resultMap id="employeeResultMap" type="xyz.wecloud.mybatis.spring.models.Employee">
+<mapper namespace="xyz.wecloud.mybatis.spring.xml.mappers.EmployeeMapper">
+    <resultMap id="employeeResultMap" type="xyz.wecloud.mybatis.spring.xml.models.Employee">
         <id property="empId" column="emp_id"/>
         <result property="empName" column="emp_name"/>
         <result property="empSalary" column="emp_salary"/>

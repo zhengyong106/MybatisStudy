@@ -1,4 +1,4 @@
-package xyz.wecloud.mybatis.spring;
+package xyz.wecloud.mybatis.spring.xml;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import xyz.wecloud.mybatis.spring.models.Department;
-import xyz.wecloud.mybatis.spring.models.Employee;
-import xyz.wecloud.mybatis.spring.services.ApplicationService;
+import xyz.wecloud.mybatis.spring.xml.models.Department;
+import xyz.wecloud.mybatis.spring.xml.models.Employee;
+import xyz.wecloud.mybatis.spring.xml.services.ApplicationService;
 
 import java.util.Date;
 

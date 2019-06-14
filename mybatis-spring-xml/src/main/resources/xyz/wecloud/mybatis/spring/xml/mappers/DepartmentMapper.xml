@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="xyz.wecloud.mybatis.spring.mappers.db2.DepartmentMapper">
-    <resultMap id="departmentResultMap" type="xyz.wecloud.mybatis.spring.models.Department">
+<mapper namespace="xyz.wecloud.mybatis.spring.xml.mappers.DepartmentMapper">
+    <resultMap id="departmentResultMap" type="xyz.wecloud.mybatis.spring.xml.models.Department">
         <id property="depId" column="dep_id"/>
         <result property="depName" column="dep_name"/>
         <result property="depCTime" column="dep_ctime"/>

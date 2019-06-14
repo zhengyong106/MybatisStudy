@@ -1,4 +1,4 @@
-package xyz.wecloud.mybatis.spring.models;
+package xyz.wecloud.mybatis.spring.xml.models;
 
 public class Employee {
     private Integer empId;
