@@ -34,6 +34,6 @@
     </databaseIdProvider>
     
     <mappers>
-        <mapper resource="xyz/wecloud/mybatis/mapper/EmployeeMapper.xml"/>
+        <package name="xyz.wecloud.mybatis.mapper"/>
     </mappers>
 </configuration>

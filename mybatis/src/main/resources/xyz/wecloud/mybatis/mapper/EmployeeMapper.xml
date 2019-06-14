@@ -49,8 +49,4 @@
         LEFT JOIN TAB_DEP C ON A.dep_id = C.dep_id
         WHERE A.emp_id = #{id}
     </select>
-
-    <select id="selectDepartmentById" resultMap="departmentResultMap">
-        SELECT * FROM TAB_DEP WHERE dep_id = #{id}
-    </select>
 </mapper>

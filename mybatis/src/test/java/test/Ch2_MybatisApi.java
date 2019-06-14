@@ -11,6 +11,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import xyz.wecloud.mybatis.mapper.EmployeeMapper;
 import xyz.wecloud.mybatis.model.Employee;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class Ch2_MybatisApi {
         Configuration configuration = new Configuration();
         configuration.setEnvironment(environment);
         configuration.setLazyLoadingEnabled(true);
-        configuration.addMappers("xyz.wecloud.mybatis.mapper");
+        configuration.addMapper(EmployeeMapper.class);
 
         // 通过读取 configuration 配置构建 SessionFactory 对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
@@ -50,7 +51,7 @@ public class Ch2_MybatisApi {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         // 执行 Statement
-        Employee employee = sqlSession.selectOne("selectEmployeeById", 1);
+        Employee employee = sqlSession.selectOne("xyz.wecloud.mybatis.mapper.EmployeeMapper.selectEmployeeById", 1);
         logger.info("输出结果集[{}]", employee);
 
         // 释放资源

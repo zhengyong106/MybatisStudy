@@ -14,7 +14,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public Employee selectEmployeeById(Integer userId) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        Employee user = sqlSession.selectOne("selectEmployeeById", userId);
+        Employee user = sqlSession.selectOne("xyz.wecloud.mybatis.mapper.EmployeeMapper.selectEmployeeById", userId);
         sqlSession.close();
         return user;
     }

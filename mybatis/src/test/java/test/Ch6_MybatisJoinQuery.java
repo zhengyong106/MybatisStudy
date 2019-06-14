@@ -14,8 +14,8 @@ import xyz.wecloud.mybatis.model.EmployeeCustom;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Ch5_MybatisJoinQuery {
-    private static Logger logger = LoggerFactory.getLogger(Ch5_MybatisJoinQuery.class);
+public class Ch6_MybatisJoinQuery {
+    private static Logger logger = LoggerFactory.getLogger(Ch6_MybatisJoinQuery.class);
     private SqlSessionFactory sqlSessionFactory;
 
     @Before
