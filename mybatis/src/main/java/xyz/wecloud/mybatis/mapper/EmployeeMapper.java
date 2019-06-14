@@ -4,6 +4,6 @@ import xyz.wecloud.mybatis.models.Employee;
 import xyz.wecloud.mybatis.models.EmployeeCustom;
 
 public interface EmployeeMapper {
-    Employee selectEmployeeById(int id);
-    EmployeeCustom selectEmployeeCustomById(int id);
+    Employee selectEmployeeById(Integer id);
+    EmployeeCustom selectEmployeeCustomById(Integer id);
 }

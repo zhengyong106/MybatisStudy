@@ -9,7 +9,11 @@
         <!-- 开启延迟加载 -->
         <setting name="lazyLoadingEnabled" value="TRUE" />
     </settings>
-    
+
+    <plugins>
+        <plugin interceptor="xyz.wecloud.mybatis.plugin.PrintSqlPlugin"/>
+    </plugins>
+
     <environments default="database1">
         <!-- 定义默认环境 -->
         <environment id="database1">
