@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.wecloud.mybatis.mapper.EmployeeMapper;
-import xyz.wecloud.mybatis.models.Employee;
+import xyz.wecloud.mybatis.model.Employee;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package xyz.wecloud.mybatis.models;
+package xyz.wecloud.mybatis.model;
 
 public class Card {
     private Integer cardId;

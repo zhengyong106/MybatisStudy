@@ -1,8 +1,8 @@
-package xyz.wecloud.mybatis.daos;
+package xyz.wecloud.mybatis.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import xyz.wecloud.mybatis.models.Employee;
+import xyz.wecloud.mybatis.model.Employee;
 
 public class EmployeeDaoImpl implements EmployeeDao {
     private SqlSessionFactory sqlSessionFactory;

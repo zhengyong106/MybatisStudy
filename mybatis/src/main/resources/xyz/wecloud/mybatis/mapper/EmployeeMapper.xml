@@ -3,14 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.wecloud.mybatis.mapper.EmployeeMapper">
-    <resultMap id="employeeResultMap" type="xyz.wecloud.mybatis.models.Employee">
+    <resultMap id="employeeResultMap" type="xyz.wecloud.mybatis.model.Employee">
         <id property="empId" column="emp_id"/>
         <result property="empName" column="emp_name"/>
         <result property="empSalary" column="emp_salary"/>
         <result property="empAge" column="emp_age"/>
     </resultMap>
 
-    <resultMap id="employeeCustomResultMapper" type="xyz.wecloud.mybatis.models.EmployeeCustom">
+    <resultMap id="employeeCustomResultMapper" type="xyz.wecloud.mybatis.model.EmployeeCustom">
         <id property="empId" column="emp_id"/>
         <result property="empName" column="emp_name"/>
         <result property="empSalary" column="emp_salary"/>
@@ -18,14 +18,14 @@
         <!-- 数据库关联OneToOne -->
         <association property="department" select="selectDepartmentById" column="dep_id"/>
 
-        <!--<association property="department" javaType="store.wecloud.mybatis.models.Department">-->
+        <!--<association property="department" javaType="store.wecloud.mybatis.model.Department">-->
             <!--<id property="depId" column="dep_id"/>-->
             <!--<result property="depName" column="dep_name"/>-->
             <!--<result property="depCTime" column="dep_ctime"/>-->
         <!--</association>-->
 
         <!-- 数据库关联OneToMany -->
-        <collection property="empCards" ofType="xyz.wecloud.mybatis.models.Card">
+        <collection property="empCards" ofType="xyz.wecloud.mybatis.model.Card">
             <id property="cardId" column="card_id"/>
             <result property="cardName" column="card_name"/>
             <result property="cardType" column="card_type"/>
@@ -33,7 +33,7 @@
         </collection>
     </resultMap>
 
-    <resultMap id="departmentResultMap" type="xyz.wecloud.mybatis.models.Department">
+    <resultMap id="departmentResultMap" type="xyz.wecloud.mybatis.model.Department">
         <id property="depId" column="dep_id"/>
         <result property="depName" column="dep_name"/>
         <result property="depCTime" column="dep_ctime"/>

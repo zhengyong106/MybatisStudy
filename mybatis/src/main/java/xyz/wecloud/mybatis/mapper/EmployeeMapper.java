@@ -1,7 +1,7 @@
 package xyz.wecloud.mybatis.mapper;
 
-import xyz.wecloud.mybatis.models.Employee;
-import xyz.wecloud.mybatis.models.EmployeeCustom;
+import xyz.wecloud.mybatis.model.Employee;
+import xyz.wecloud.mybatis.model.EmployeeCustom;
 
 public interface EmployeeMapper {
     Employee selectEmployeeById(Integer id);

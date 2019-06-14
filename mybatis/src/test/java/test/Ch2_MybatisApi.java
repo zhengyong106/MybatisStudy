@@ -1,7 +1,7 @@
 package test;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.apache.ibatis.datasource.pooled.PooledDataSource;
+import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
@@ -11,7 +11,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import xyz.wecloud.mybatis.models.Employee;
+import xyz.wecloud.mybatis.model.Employee;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,33 +22,34 @@ public class Ch2_MybatisApi {
 
     @Test
     public void findUserById() throws IOException {
-        // 创建Properties对象，然后加载配置文件，最后读取配置文件中的配置值
-        InputStream inputStream = Ch2_MybatisApi.class.getClassLoader().getResourceAsStream("datasource.properties");
+        // 读取配置文件，并创建 Properties 对象
+        InputStream inputStream = Resources.getResourceAsStream("datasource.properties");
         Properties properties = new Properties();
         properties.load(inputStream);
 
-
-        Configuration configuration = new Configuration();
-
+        // 创建 DataSource 数据源
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(properties.getProperty("jdbc.driverClassName"));
         dataSource.setUrl(properties.getProperty("jdbc.url"));
         dataSource.setUsername(properties.getProperty("jdbc.username"));
         dataSource.setPassword(properties.getProperty("jdbc.password"));
 
-        // spring 默认事务工厂
-        // new SpringManagedTransactionFactory();
-        Environment environment = new Environment("database1", new JdbcTransactionFactory(), dataSource);
+        // 创建 Environment 运行环境
+        Environment environment = new Environment("defaultEnvironment", new JdbcTransactionFactory(), dataSource);
+
+        // 创建 Configuration 配置
+        Configuration configuration = new Configuration();
         configuration.setEnvironment(environment);
         configuration.setLazyLoadingEnabled(true);
         configuration.addMappers("xyz.wecloud.mybatis.mapper");
 
+        // 通过读取 configuration 配置构建 SessionFactory 对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 
-        // 通过 sqlSessionFactory 得到 sqlSession
+        // 获取 SqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        // 通过 sqlSession 执行 sql 语句，将返回结果集映射成 Employee 模型对象，并将查询的结果放入到 sqlSession 一级缓存中
+        // 执行 Statement
         Employee employee = sqlSession.selectOne("selectEmployeeById", 1);
         logger.info("输出结果集[{}]", employee);
 

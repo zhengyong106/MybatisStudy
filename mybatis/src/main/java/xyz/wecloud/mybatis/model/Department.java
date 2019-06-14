@@ -1,4 +1,4 @@
-package xyz.wecloud.mybatis.models;
+package xyz.wecloud.mybatis.model;
 
 import java.util.Date;
 
