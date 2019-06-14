@@ -6,10 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import xyz.wecloud.mybatis.spring.configs.ApplicationConfig;
-import xyz.wecloud.mybatis.spring.models.Department;
-import xyz.wecloud.mybatis.spring.models.Employee;
-import xyz.wecloud.mybatis.spring.services.ApplicationService;
+import xyz.wecloud.mybatis.spring.annotation.configs.ApplicationConfig;
+import xyz.wecloud.mybatis.spring.annotation.models.Department;
+import xyz.wecloud.mybatis.spring.annotation.models.Employee;
+import xyz.wecloud.mybatis.spring.annotation.services.ApplicationService;
 
 import java.util.Date;
 

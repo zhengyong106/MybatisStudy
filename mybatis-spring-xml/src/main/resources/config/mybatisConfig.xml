@@ -13,7 +13,7 @@
 
     <!-- 方法二 配置 MapperScannerConfigurer 可用于指定需要扫描的 Mapper 映射器包路径 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="xyz.wecloud.mybatis.spring.mappers" />
+        <property name="basePackage" value="xyz.wecloud.mybatis.spring.annotation.mappers" />
     </bean>
 
     <!-- 方法三 配置 MapperFactoryBean 用于生产 Mapper 映射器代理实例 -->

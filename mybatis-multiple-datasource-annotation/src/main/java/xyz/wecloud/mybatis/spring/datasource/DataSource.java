@@ -12,5 +12,5 @@ import java.lang.annotation.*;
 @Documented
 public @interface DataSource {
     @AliasFor("dataSourceType")
-    DataSourceType value() default DataSourceType.DATA_BASE_1;
+    DataSourceType value() default DataSourceType.DATA_SOURCE_1;
 }
