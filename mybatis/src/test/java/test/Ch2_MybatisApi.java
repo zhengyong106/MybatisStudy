@@ -21,7 +21,7 @@ public class Ch2_MybatisApi {
     private static Logger logger = LoggerFactory.getLogger(Ch2_MybatisApi.class);
 
     @Test
-    public void findUserById() throws IOException {
+    public void testSelect() throws IOException {
         // 读取配置文件，并创建 Properties 对象
         InputStream inputStream = Resources.getResourceAsStream("datasource.properties");
         Properties properties = new Properties();

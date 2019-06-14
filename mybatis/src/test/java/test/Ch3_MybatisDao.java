@@ -27,7 +27,7 @@ public class Ch3_MybatisDao {
     }
 
     @Test
-    public void getDepartmentByEmployeeId() {
+    public void testSelect() {
         // 通过封装一层 DAO 可以简化代码量和提高程序的可移植性
         EmployeeDao employeeDao = new EmployeeDaoImpl(sqlSessionFactory);
         Employee employee = employeeDao.selectEmployeeById(1);

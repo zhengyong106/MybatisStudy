@@ -14,7 +14,7 @@ public class Ch0_JdbcConnection {
     private static Logger logger = LoggerFactory.getLogger(Ch0_JdbcConnection.class);
 
     @Test
-    public void findUserById() throws SQLException {
+    public void testSelect() throws SQLException {
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;

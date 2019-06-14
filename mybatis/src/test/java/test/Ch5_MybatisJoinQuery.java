@@ -14,24 +14,21 @@ import xyz.wecloud.mybatis.model.EmployeeCustom;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Ch5_MybatisRelation {
-    private static Logger logger = LoggerFactory.getLogger(Ch5_MybatisRelation.class);
+public class Ch5_MybatisJoinQuery {
+    private static Logger logger = LoggerFactory.getLogger(Ch5_MybatisJoinQuery.class);
     private SqlSessionFactory sqlSessionFactory;
 
     @Before
     public void setUp() throws IOException {
-        // 定义mybatis配置文件路径
-        String resource = "mybatis.xml";
-        // 获取mybatis配置文件流
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        // 通过读取配置文件获取sessionFactory
+        InputStream inputStream = Resources.getResourceAsStream("mybatis.xml");
+        // 通过读取 xml 配置文件构建 SessionFactory 对象
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         // 释放资源
         inputStream.close();
     }
 
     @Test
-    public void getUserById() {
+    public void testSelect() {
         // 获取sqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
         // 通过mapper代理获取DepartmentMapper接口实现对象

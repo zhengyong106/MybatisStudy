@@ -20,26 +20,26 @@ public class Ch4_MybatisMapper {
 
     @Before
     public void setUp() throws IOException {
-        // 定义mybatis配置文件路径
-        String resource = "mybatis.xml";
-        // 获取mybatis配置文件流
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        // 通过读取配置文件获取sessionFactory
+        InputStream inputStream = Resources.getResourceAsStream("mybatis.xml");
+        // 通过读取 xml 配置文件构建 SessionFactory 对象
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         // 释放资源
         inputStream.close();
     }
 
     @Test
-    public void getUserById() {
-        // 获取sqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        // 通过mapper代理获取userMapper接口实现对象
-        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
-        // 执行statement
-        Employee employee = employeeMapper.selectEmployeeById(1);
-        logger.info("输出映射对象[{}]", employee);
-        // 释放资源
-        sqlSession.close();
+    public void testSelect() {
+        // 获取 SqlSession
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = sqlSessionFactory.openSession();
+            // 通过将 Mapper 接口与 Mybatis 映射文件进行绑定，Mybatis 会自动为 Mapper 接口创建代理类
+            EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+            Employee employee = employeeMapper.selectEmployeeById(1);
+            logger.info("输出映射对象[{}]", employee);
+        } finally {
+            // 释放资源
+            sqlSession.close();
+        }
     }
 }
