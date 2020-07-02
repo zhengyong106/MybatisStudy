@@ -23,7 +23,7 @@
         <spring-version>5.1.7.RELEASE</spring-version>
         <slf4j-version>1.7.26</slf4j-version>
         <!-- 高版本 mysql 和 atomikos 存在兼容性问题，这里使用低版本mysql -->
-        <mysql-version>6.0.6</mysql-version>
+        <mysql-version>8.0.16</mysql-version>
         <mybatis-version>3.5.1</mybatis-version>
         <mybatis-spring-version>2.0.1</mybatis-spring-version>
         <junit-version>4.12</junit-version>
