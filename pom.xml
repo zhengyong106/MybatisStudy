@@ -26,7 +26,7 @@
         <mysql-version>6.0.6</mysql-version>
         <mybatis-version>3.5.1</mybatis-version>
         <mybatis-spring-version>2.0.1</mybatis-spring-version>
-        <junit-version>4.12</junit-version>
+        <junit-version>4.13.1</junit-version>
         <druid-version>1.1.17</druid-version>
         <atomikos-version>5.0.0</atomikos-version>
         <jta-version>1.1</jta-version>
